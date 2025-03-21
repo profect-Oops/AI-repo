@@ -61,12 +61,8 @@ RUN /opt/airflow/venv/bin/pip install --no-cache-dir -r requirements.txt
 # DAG 복사
 COPY ./airflow/dags /opt/airflow/dags
 
-# ✅ 루트 권한으로 복사 + 실행 권한 부여
-USER root
-
-COPY setup_schema.sql /opt/airflow/setup_schema.sql
-COPY init_db.sh /opt/airflow/init_db.sh
-RUN chmod +x /opt/airflow/init_db.sh
+# ✅ MySQL 테이블 자동 생성 SQL 복사
+COPY init.sql /opt/airflow/init.sql
 
 # ✅ Webserver & Scheduler 엔트리포인트 추가 (root에서 복사 & 권한 설정)
 COPY --chown=airflow:airflow entrypoint-webserver.sh /entrypoint-webserver.sh
