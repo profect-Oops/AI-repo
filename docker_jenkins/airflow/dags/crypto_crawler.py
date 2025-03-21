@@ -40,12 +40,18 @@ ALLOWED_TICKERS = {
     "KRW-MTL": (10, "MTL")
 }
 
+# ✅ ScraperAPI 설정
+SCRAPERAPI_KEY = os.getenv("SCRAPERAPI_KEY")
+proxy = f"http://scraperapi:{SCRAPERAPI_KEY}@proxy-server.scraperapi.com:8001"
+
+
 # ✅ CryptoPanic API 설정
 API_KEY = os.getenv("CRYPTOPANIC_API_KEY")
 API_URL = f"https://cryptopanic.com/api/v1/posts/?auth_token={API_KEY}"
 
 # ✅ ChromeDriver 실행 (Selenium 사용)
 chrome_options = Options()
+chrome_options.add_argument(f'--proxy-server={proxy}')
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
