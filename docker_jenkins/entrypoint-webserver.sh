@@ -13,7 +13,7 @@ done
 
 # ✅ MySQL 테이블 자동 생성
 echo "Creating tables in MySQL RDS..."
-/opt/airflow/init_db.sh
+mysql -h $DB_HOST -P $DB_PORT -u $DB_USER -p$DB_PASSWORD --default-character-set=utf8mb4 < /opt/airflow/init.sql
 echo "init.sql execution finished!"
 
 # ✅ Airflow DB 초기화 (최초 실행 시에만)
