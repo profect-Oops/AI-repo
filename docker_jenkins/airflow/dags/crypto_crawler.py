@@ -134,21 +134,26 @@ try:
         crypto_panic_url = post["url"]
 
         if crypto_panic_url in existing_sources:
-            duplicate_news += 1
-            continue
+            print("⚠️ 이미 저장된 뉴스입니다 (중복)")
+	    duplicate_news += 1
+            continue	
 
         newspaper = post.get("source", {}).get("title", "N/A")
 
         content_en, content_ko = get_news_content(crypto_panic_url)
         if not content_en:
-            continue
-        
+            print("⚠️ 본문 없음 or 크롤링 실패")
+	    continue
+	else:
+	    print(f"✅ 본문 크롤링 성공 ({len(content_en)}자)")
+	
         #트위터, 유튜브 필터링   
-        if should_exclude_news(content_en):
-		        continue
-
-        news_datetime = parse_datetime(post.get("published_at", ""))
-
+        if should_exclude_news(content_en): 
+	    print("⚠️ 쿠키/약관 메시지 포함 → 저장 제외")	
+	    continue
+		
+	news_datetime = parse_datetime(post.get("published_at", ""))
+			
         # ✅ 10개 코인만 필터링 & 중복 제거
         related_coins = list(set(get_coin_info(coin["code"]) for coin in post.get("currencies", []) if "code" in coin))
         related_coins = [coin for coin in related_coins if coin is not None]
@@ -157,9 +162,12 @@ try:
         related_tickers = list(set(coin[1] for coin in related_coins))  # 코인 티커 중복 제거
 
         if not related_coin_ids:
+            print(f"⚠️ 관련 코인 없음. 원본 코인들: {[coin['code'] for coin in post.get('currencies', [])]}")	
             filtered_articles += 1
-            continue
-
+	    continue
+	else:	
+	    print(f"✅ 관련 코인 있음 → IDs: {related_coin_ids}, Tickers: {related_tickers}") 
+		
         # ✅ 뉴스 저장 (중복 업데이트)
         insert_news_query = """
         INSERT INTO news (title, title_en, content, content_en, newspaper, source, uploadtime)
