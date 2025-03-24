@@ -4,6 +4,9 @@ FROM ubuntu:22.04
 # ✅ 루트 권한으로 시스템 패키지 설치
 USER root
 
+# ✅ airflow 사용자 먼저 생성 (🔑 핵심!)
+RUN useradd -m airflow
+
 # 필수 패키지 설치 및 Chrome 설치
 RUN apt-get update && apt-get install -y \
     wget \
