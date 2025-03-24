@@ -12,6 +12,11 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libnss3 \
     libxss1 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxfixes3 \
+    libxrandr2 \
+    libgbm1 \
     libgdk-pixbuf2.0-0 \
     libasound2 \
     libatk-bridge2.0-0 \
@@ -21,7 +26,11 @@ RUN apt-get update && apt-get install -y \
     libnspr4 \
     libx11-xcb1 \
     libxtst6 \
+    libxkbcommon0 \
     ca-certificates \
+    fonts-liberation \
+    libxshmfence1 \
+    xdg-utils \
     pkg-config \
     libmysqlclient-dev \
     mysql-client \
@@ -29,13 +38,24 @@ RUN apt-get update && apt-get install -y \
     python3.10-venv \
     python3.10-dev \
     python3-pip && \
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    apt install -y ./google-chrome-stable_current_amd64.deb && \
-    rm google-chrome-stable_current_amd64.deb && \
+    wget https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.117/linux64/chrome-linux64.zip && \
+    unzip chrome-linux64.zip && \
+    mv chrome-linux64 /opt/chrome && \
+    ln -s /opt/chrome/chrome /usr/bin/google-chrome && \
+    rm chrome-linux64.zip && \
+    wget https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.117/linux64/chromedriver-linux64.zip && \
+    unzip chromedriver-linux64.zip && \
+    chmod +x chromedriver-linux64/chromedriver && \
+    mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver && \ 
+    mkdir -p /opt/airflow/bin && \
+    cp /usr/local/bin/chromedriver /opt/airflow/bin/chromedriver && \
+    chown airflow:airflow /opt/airflow/bin/chromedriver && \
+    chmod +x /opt/airflow/bin/chromedriver && \
+    rm -rf chromedriver-linux64 chromedriver-linux64.zip &&\
     rm -rf /var/lib/apt/lists/*
 
 # ✅ Airflow 사용자 추가 (Ubuntu 기본 계정 X)
-RUN useradd -m airflow && mkdir -p /opt/airflow && chown -R airflow:airflow /opt/airflow
+RUN mkdir -p /opt/airflow && chown -R airflow:airflow /opt/airflow
 
 # ✅ airflow 사용자로 변경 (venv 생성 전에 변경)
 USER airflow
