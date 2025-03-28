@@ -65,8 +65,9 @@ pipeline {
                     cd oops-k8s-manifests/${GITOPS_PATH}
 
                     echo "📝 이미지 태그 업데이트"
-                    yq e -i '.spec.template.spec.containers[0].image = "${ECR_REPO}:${TAG}"' webserver.yaml
-                    yq e -i '.spec.template.spec.containers[0].image = "${ECR_REPO}:${TAG}"' scheduler.yaml
+                    yq e -i ".spec.template.spec.containers[0].image = \"${ECR_REPO}:${TAG}\"" webserver.yaml
+                    yq e -i ".spec.template.spec.containers[0].image = \"${ECR_REPO}:${TAG}\"" scheduler.yaml
+
 
                     git config user.name "somin"
                     git config user.email "airflow@jenkins.com"
