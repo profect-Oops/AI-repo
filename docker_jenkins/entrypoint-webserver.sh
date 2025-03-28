@@ -4,6 +4,9 @@
 export PATH="/opt/airflow/venv/bin:$PATH" 
 export AIRFLOW_HOME=/opt/airflow
 
+# ✅ DB 연결 문자열 생성 (Kubernetes에서는 필수!)
+export AIRFLOW__DATABASE__SQL_ALCHEMY_CONN="mysql+pymysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
+
 # ✅ MySQL RDS가 완전히 실행될 때까지 대기
 echo "Waiting for MySQL to be ready..."
 until mysqladmin ping -h "$DB_HOST" --silent; do
