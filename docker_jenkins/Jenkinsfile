@@ -57,7 +57,7 @@ pipeline {
         stage('Update GitOps Repo for ArgoCD') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'gitops-credentials', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-                    sh """
+                    sh '''
                     echo "📥 GitOps 레포 클론 중..."
                     rm -rf oops-k8s-manifests
                     git clone --branch ${GITOPS_BRANCH} https://${GIT_USER}:${GIT_PASS}@github.com/profect-Oops/oops-k8s-manifests.git
@@ -65,16 +65,16 @@ pipeline {
                     cd oops-k8s-manifests/${GITOPS_PATH}
 
                     echo "📝 이미지 태그 업데이트"
-                    yq e -i ".spec.template.spec.containers[0].image = \"${ECR_REPO}:${TAG}\"" webserver.yaml
-                    yq e -i ".spec.template.spec.containers[0].image = \"${ECR_REPO}:${TAG}\"" scheduler.yaml
-
+                    IMG="${ECR_REPO}:${TAG}"
+                    yq e -i '.spec.template.spec.containers[0].image = strenv(IMG)' webserver.yaml
+                    yq e -i '.spec.template.spec.containers[0].image = strenv(IMG)' scheduler.yaml
 
                     git config user.name "somin"
                     git config user.email "airflow@jenkins.com"
                     git add webserver.yaml scheduler.yaml
                     git commit -m "🔄 Jenkins: Update Airflow image tag to ${TAG}" || echo "변경 사항 없음"
                     git push https://${GIT_USER}:${GIT_PASS}@github.com/profect-Oops/oops-k8s-manifests.git HEAD:${GITOPS_BRANCH}
-                    """
+                    '''
                 }
             }
         }
