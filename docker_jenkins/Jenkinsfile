@@ -64,16 +64,13 @@ pipeline {
 
                     cd oops-k8s-manifests/${GITOPS_PATH}
 
-                    echo "📝 이미지 태그 업데이트"
-                    IMG="${ECR_REPO}:${TAG}"
-                    # 모든 이미지 필드 업데이트
-                    yq e 'select(.kind == "Deployment") | .spec.template.spec.containers[0].image = strenv(IMG)' -i webserver.yaml
-                    yq e 'select(.kind == "Deployment") | .spec.template.spec.containers[0].image = strenv(IMG)' -i scheduler.yaml
+                    echo "📝 kustomization.yaml의 이미지 태그 업데이트"
+                    yq e '.images[0].newTag = strenv(TAG)' -i kustomization.yaml
 
                     git config user.name "somin"
                     git config user.email "airflow@jenkins.com"
-                    git add webserver.yaml scheduler.yaml
-                    git commit -m "🔄 Jenkins: Update Airflow image tag to ${TAG}" || echo "변경 사항 없음"
+                    git add kustomization.yaml
+                    git commit -m "🔄 Jenkins: Update image tag to ${TAG}" || echo "변경 사항 없음"
                     git push https://${GIT_USER}:${GIT_PASS}@github.com/profect-Oops/oops-k8s-manifests.git HEAD:${GITOPS_BRANCH}
                     '''
                 }
