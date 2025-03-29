@@ -67,8 +67,8 @@ pipeline {
                     echo "📝 이미지 태그 업데이트"
                     IMG="${ECR_REPO}:${TAG}"
                     # 모든 이미지 필드 업데이트
-                    yq e -i '(..|select(has("image"))).image = strenv(IMG)' webserver.yaml
-                    yq e -i '(..|select(has("image"))).image = strenv(IMG)' scheduler.yaml
+                    yq e 'select(.kind == "Deployment") | .spec.template.spec.containers[0].image = strenv(IMG)' -i webserver.yaml
+                    yq e 'select(.kind == "Deployment") | .spec.template.spec.containers[0].image = strenv(IMG)' -i scheduler.yaml
 
                     git config user.name "somin"
                     git config user.email "airflow@jenkins.com"
