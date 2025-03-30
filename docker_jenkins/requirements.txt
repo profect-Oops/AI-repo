@@ -5,6 +5,7 @@ apache-airflow-providers-http==5.0.0
 apache-airflow-providers-sqlite==4.0.0
 alembic==1.14.1
 sqlalchemy==1.4.54
+statsd==3.3.0
 
 # ✅ 데이터베이스 (MySQL 연결)
 pymysql==1.1.1
