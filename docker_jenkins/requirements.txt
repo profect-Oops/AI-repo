@@ -19,11 +19,15 @@ webdriver-manager==4.0.2
 
 # ✅ 데이터 처리
 pandas==2.2.3
-numpy==2.2.3
+numpy==2.0.2
 
 # ✅ 감성 분석 관련 패키지 (GPT API 활용)
 openai==1.65.2
 deep-translator==1.11.4
+
+# 감정 분석 머신러닝 모델
+joblib==1.4.2
+scikit-learn==1.6.1
 
 #탐지 우회
 undetected-chromedriver==3.5.5
