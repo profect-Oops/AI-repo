@@ -72,8 +72,9 @@ RUN python3.10 -m venv /opt/airflow/venv && \
     /opt/airflow/venv/bin/pip install apache-airflow==2.7.2 && \
     /opt/airflow/venv/bin/pip install --no-cache-dir -r requirements.txt
 
-# DAG 및 초기 SQL 복사
+# DAG, model, 초기 SQL 복사
 COPY ./airflow/dags /opt/airflow/dags
+COPY ./airflow/models /opt/airflow/models
 COPY init.sql /opt/airflow/init.sql
 
 # entrypoint 스크립트 복사 및 실행 권한 부여
