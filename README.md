@@ -20,8 +20,8 @@ docker-jenkins/
 │   └── models/
 │       └── svm_pipeline_20250401_010208.pkl  #머신러닝 모델 (커스텀SVM)
 ├── .gitignore                                #Git에 포함되지 않을 파일 설정
-├── Dockerfile                                # Airflow Webserver & Scheduler 빌드용 도커파일
-├── Jenkinsfile                               # CI/CD 파이프라인 정의
+├── Dockerfile                                #Airflow Webserver & Scheduler 빌드용 도커파일
+├── Jenkinsfile                               #CI/CD 파이프라인 정의
 ├── docker-compose.build.yml                  #이미지 빌드를 위한 도커 컴포즈 설정 (로컬/CI에서 사용
 ├── docker-compose.deploy.yml                 #실제 배포용 도커 컴포즈 설정 (서버 배포 시 사용)
 ├── entrypoint-scheduler.sh                   #Airflow Scheduler 컨테이너의 실행 시작 스크립트
