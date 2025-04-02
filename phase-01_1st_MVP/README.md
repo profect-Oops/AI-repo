@@ -57,6 +57,9 @@ CryptoPanic은 SPA(Single Page Application) 구조로,
 - ✅ 번역 자동화 (DeepL API)
 - ✅ DB 저장 자동화 (MySQL)
 
+---
 
 ## 프로젝트 착수 보고서
 https://www.notion.so/2-12-190995a6b033808fbe9ac05873a35633?pvs=4
+
+---
