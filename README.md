@@ -1,5 +1,6 @@
 # AI-repo
 ### 📁 AI-repo 구조
+![image](https://github.com/user-attachments/assets/6b078172-7658-4a43-9d49-e64d873fa281)
 
 <details>
 <summary><strong>📂 docker-jenkins 구조</strong></summary>
