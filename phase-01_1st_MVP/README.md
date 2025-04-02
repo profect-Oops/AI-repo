@@ -13,7 +13,7 @@
 
 | 파일명 | 설명 |
 |--------|------|
-| `crawler.py` | CryptoPanic API 호출 + Selenium으로 DOM 요약문 크롤링 |
+| `crypto_crawler.py` | CryptoPanic API 호출 + Selenium으로 DOM 요약문 크롤링 |
 | `crawl_crypto_dag.py` | Airflow DAG 구성 (5분 주기 자동 실행) |
 
 ---
@@ -46,7 +46,7 @@ CryptoPanic은 SPA(Single Page Application) 구조로,
 
 - 본 Phase에서는, 
   데이터 수집 → 자동화 → 번역 → 저장까지의 **엔드-투-엔드 파이프라인** 완성
-- 다음 Phase에서 모델 학습 및 자동 라벨링으로 확장 예정
+- 다음 Phase에서 GPT API활용과 머신러닝/딥러닝 모델 개발로 확장 및 성능 비교 예정
 
 ---
 
@@ -56,3 +56,7 @@ CryptoPanic은 SPA(Single Page Application) 구조로,
 - ✅ 5분 스케줄링 (Airflow)
 - ✅ 번역 자동화 (DeepL API)
 - ✅ DB 저장 자동화 (MySQL)
+
+
+## 프로젝트 착수 보고서
+https://www.notion.so/2-12-190995a6b033808fbe9ac05873a35633?pvs=4
