@@ -44,7 +44,7 @@ CryptoPanic은 SPA(Single Page Application) 구조로,
 
 ## 💭 회고
 
-- 본 Phase에서는 **ML 학습/라벨링 없이**,  
+- 본 Phase에서는, 
   데이터 수집 → 자동화 → 번역 → 저장까지의 **엔드-투-엔드 파이프라인** 완성
 - 다음 Phase에서 모델 학습 및 자동 라벨링으로 확장 예정
 
