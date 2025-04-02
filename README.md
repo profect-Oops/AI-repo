@@ -2,10 +2,10 @@
 ### 📁 AI-repo 구조
 
 <details>
-<summary><strong>📂 GitHub 디렉토리 구조 보기</strong></summary>
+<summary><strong>📂 docker-jenkins 구조</strong></summary>
 
 ```
-crypto-mlops/
+docker-jenkins/
 ├── cloud_functions/
 │   ├── rss_crawler/
 │   │   ├── main.py                  ← rss 전용 함수
