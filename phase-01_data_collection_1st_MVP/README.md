@@ -1,4 +1,4 @@
-# 🚀 Phase 01 - 1st MVP: CryptoPanic 뉴스 크롤링 + 자동화 + 번역
+# 🚀 Phase 01 - Data Collection / 1st MVP: CryptoPanic 뉴스 크롤링 + 자동화 + 번역
 
 ## ✅ 목표
 - CryptoPanic API 기반 암호화폐 뉴스 **크롤링**
@@ -11,10 +11,11 @@
 
 ## 📂 주요 파일
 
-| 파일명 | 설명 |
-|--------|------|
-| `crypto_crawler.py` | CryptoPanic API 호출 + Selenium으로 DOM 요약문 크롤링 |
-| `crawl_crypto_dag.py` | Airflow DAG 구성 (5분 주기 자동 실행) |
+| 파일명                | 설명                                       |
+|----------------------|--------------------------------------------|
+| `crypto_crawler.py`  | CryptoPanic API 호출 + Selenium으로 DOM 요약문 크롤링 |
+| `crawl_crypto_dag.py`| Airflow DAG 구성 (5분 주기 자동 실행)     |
+
 
 ---
 
