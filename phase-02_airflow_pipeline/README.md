@@ -1,4 +1,4 @@
-# Phase-02 | 실시간 CryptoPanic 뉴스 수집 자동화 (Airflow 기반)
+# Phase-02 | 실시간 CryptoPanic 뉴스 수집 자동화 (Airflow Pipeline)
 
 
 ---
@@ -76,7 +76,7 @@ coin_data = [
 - API 수집 → 번역 → 티커 필터링 → DB 저장 전체 흐름
 - 중복 제거 및 대표 티커 매핑 확인
 
-[📺 시연 영상 보기]  https://naver.me/F75XFafh
+[📺 시연 영상 보기] https://drive.google.com/file/d/1fPw5VDxLdeiohLqVFZ8fSORTgpXRK3vx/view?usp=sharing
 
 
 
