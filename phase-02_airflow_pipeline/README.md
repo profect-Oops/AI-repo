@@ -61,3 +61,22 @@ coin_data = [
   (4, "KRW-QTUM"), (5, "KRW-WAVES"), (6, "KRW-XEM"),
   (7, "KRW-ETC"), (8, "KRW-NEO"), (9, "KRW-SNT"), (10, "KRW-MTL"),
 ]
+```
+
+---
+
+## 🎥 실시간 뉴스 수집 자동화 시연
+
+> 아래 영상은 Airflow DAG가 5분 주기로 실행
+> CryptoPanic API와 Selenium을 통해 실시간으로 뉴스 데이터를 수집
+> 지정된 10개 코인 티커에 맞춰 정제된 뉴스가 MySQL에 저장되는 과정
+
+📌 **주요 시연 포인트**:
+- Airflow DAG 트리거 및 실행 로그 확인
+- API 수집 → 번역 → 티커 필터링 → DB 저장 전체 흐름
+- 중복 제거 및 대표 티커 매핑 확인
+
+[📺 시연 영상 보기]  https://naver.me/F75XFafh
+
+
+
