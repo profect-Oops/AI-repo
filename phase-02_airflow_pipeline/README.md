@@ -72,9 +72,9 @@ coin_data = [
 > 지정된 10개 코인 티커에 맞춰 정제된 뉴스가 MySQL에 저장되는 과정
 
 📌 **주요 시연 포인트**:
-- Airflow DAG 트리거 및 실행 로그 확인
-- API 수집 → 번역 → 티커 필터링 → DB 저장 전체 흐름
-- 중복 제거 및 대표 티커 매핑 확인
+- Airflow DAG가 **5분 주기로 자동 실행되어 뉴스 크롤링 수행**
+- API 수집 → 번역 → 티커 필터링 → DB 저장까지의 전 과정을 **자동화된 파이프라인으로 처리**
+- 약 40초 후 MySQL에서 **신규 뉴스 데이터가 저장되어 DB 내용이 갱신된 결과** 확인 가능
 
 [📺 시연 영상 보기] https://drive.google.com/file/d/1fPw5VDxLdeiohLqVFZ8fSORTgpXRK3vx/view?usp=sharing
 
