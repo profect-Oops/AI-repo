@@ -26,13 +26,13 @@
 
 ### 🔹 Extract  
 - CryptoPanic API 및 Selenium으로 뉴스 수집  
-- *뉴스 요약문 크롤링*
+- 뉴스 요약문 크롤링
 
 ### 🔹 Transform  
 - 뉴스 제목/본문 번역 (Google Translate API)  
 - UTC → KST 시간 변환  
 - 지정 코인 매핑 (티커 기반)
-- 중복 제거, 50자 미만/내용 누락 뉴스 필터링
+- 중복 제거, 50자 미만/내용 누락 뉴스 필터링 (데이터 품질 관리)
 
 ### 🔹 Load  
 - 정제된 뉴스 → `news` 테이블 저장
