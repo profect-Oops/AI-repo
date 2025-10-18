@@ -1,11 +1,11 @@
-# Phase-02 | 실시간 CryptoPanic 뉴스 수집 자동화 (Airflow Pipeline)
+# Phase-02 | 실시간 뉴스 수집 및 저장 자동화 (Airflow ETL Pipeline)
 
 
 ---
 
 ## 🎯 목표
 
-- CryptoPanic API 기반으로 암호화폐 뉴스 실시간 수집
+- API 기반으로 암호화폐 뉴스 실시간 수집
 - SPA 구조 대응 (Selenium 활용 DOM 추출)
 - 뉴스 요약 및 전체 본문 수집 → 번역 → 코인 매핑
 - 5분마다 Airflow DAG로 자동 실행
@@ -17,7 +17,7 @@
 
 | 파일명 | 설명 |
 |--------|------|
-| `crypto_crawler.py` | CryptoPanic API + Selenium 크롤러 |
+| `crypto_crawler.py` | API + Selenium 크롤러 |
 | `crawl_crypto_dag.py` | Airflow DAG 파일 (5분마다 자동 실행) |
 
 ---
@@ -25,7 +25,7 @@
 ## 🧩 파이프라인 구조 (ETL)
 
 ### 🔹 Extract  
-- CryptoPanic API 및 Selenium으로 뉴스 수집  
+- API 및 Selenium으로 뉴스 수집  
 - 뉴스 요약문 크롤링
 
 ### 🔹 Transform  
@@ -51,7 +51,7 @@
 
 ## 🔍 코인 티커 필터링
 
-> 🔸 **10개 코인 선정은 백엔드팀 요청사항**을 기반으로 진행  
+> 🔸 **10개 코인 선정은 백엔드팀 지정 및 요청사항**을 기반으로 진행  
 > 🔸 총 10개의 코인 티커만 필터링하여 수집  
 > 🔸 해당 기준은 향후 비즈니스 요구사항에 따라 유연하게 확장 가능하도록 설계됨
 
@@ -68,7 +68,7 @@ coin_data = [
 ## 🎥 실시간 뉴스 수집 자동화 시연
 
 > 아래 영상은 Airflow DAG가 5분 주기로 실행
-> CryptoPanic API와 Selenium을 통해 실시간으로 뉴스 데이터를 수집
+> API와 Selenium을 통해 실시간으로 뉴스 데이터를 수집
 > 지정된 10개 코인 티커에 맞춰 정제된 뉴스가 MySQL에 저장되는 과정
 
 📌 **주요 시연 포인트**:
